@@ -1,69 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Premium Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
+<title>Rafi Pattan Portfolio</title>
+<style>
+body{background:#0f0f0f;color:#fff;font-family:Arial;margin:0}
+nav{background:#1a1a1a;padding:1em;display:flex;gap:2em}
+nav a{color:#ff6b35;text-decoration:none}
+.hero{height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+section{padding:3em;max-width:1200px;margin:0 auto}
+h2{color:#ff6b35;margin-bottom:2em}
+.portfolio-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2em;margin-top:2em}
+.card{background:#1a1a1a;padding:1.5em;border-radius:8px;border:1px solid #333}
+.card:hover{border-color:#ff6b35;transform:translateY(-10px);transition:all 0.3s}
+footer{text-align:center;padding:1em;background:#1a1a1a}
+@media(max-width:768px){nav{flex-direction:column}}
+</style>
 </head>
 <body>
-    <!-- Hero Section -->
-    <header class="hero">
-        <h1>Welcome to My Premium Portfolio</h1>
-        <p>Your gateway to my work and creativity</p>
-        <a href="#portfolio" class="btn">View My Work</a>
-    </header>
-
-    <!-- Showreel Section -->
-    <section class="showreel">
-        <h2>Showreel</h2>
-        <video controls>
-            <source src="showreel.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-    </section>
-
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="portfolio">
-        <h2>My Portfolio</h2>
-        <div class="portfolio-items">
-            <div class="portfolio-item">
-                <img src="project1.jpg" alt="Project 1">
-                <h3>Project 1</h3>
-            </div>
-            <div class="portfolio-item">
-                <img src="project2.jpg" alt="Project 2">
-                <h3>Project 2</h3>
-            </div>
-            <div class="portfolio-item">
-                <img src="project3.jpg" alt="Project 3">
-                <h3>Project 3</h3>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section class="about">
-        <h2>About Me</h2>
-        <p>Hello! I'm a passionate developer with experience in creating stunning websites and applications. My goal is to bring ideas to life through code and creativity.</p>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <h2>Contact Me</h2>
-        <form>
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-            <label for="message">Message:</label>
-            <textarea id="message" name="message" required></textarea>
-            <button type="submit">Send Message</button>
-        </form>
-    </section>
-
-    <footer>
-        <p>&copy; 2026 My Portfolio. All rights reserved.</p>
-    </footer>
+<nav><strong>🎬 Rafi Pattan</strong><div><a href="#home">Home</a><a href="#portfolio">Portfolio</a><a href="#about">About</a><a href="#contact">Contact</a></div></nav>
+<section class="hero" id="home"><h1>Rafi Pattan</h1><p>Professional Video Editor & Graphic Designer</p><button style="padding:1em 2em;background:#ff6b35;color:#fff;border:none;border-radius:50px;cursor:pointer">Hire Me</button></section>
+<section id="portfolio"><h2>Recent Projects</h2><div class="portfolio-grid"><div class="card"><h3>Project 1</h3><p>Brand Promo Video</p></div><div class="card"><h3>Project 2</h3><p>Instagram Reels</p></div><div class="card"><h3>Project 3</h3><p>Corporate Video</p></div><div class="card"><h3>Project 4</h3><p>Wedding Highlight</p></div><div class="card"><h3>Project 5</h3><p>Ad Campaign</p></div><div class="card"><h3>Project 6</h3><p>Motion Graphics</p></div></div></section>
+<section id="about"><h2>About Me</h2><p>Professional video editor with expertise in Adobe Creative Suite. Based in Hyderabad, India.</p></section>
+<section id="contact"><h2>Contact</h2><p>Email: rafipattan@example.com | WhatsApp: +91 9876543210</p></section>
+<footer><p>&copy; 2026 Rafi Pattan. All Rights Reserved.</p></footer>
 </body>
 </html>

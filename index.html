@@ -1,1 +1,69 @@
-<!DOCTYPE html>\n<html lang="en">\n<head>\n    <meta charset="UTF-8">\n    <meta name="viewport" content="width=device-width, initial-scale=1.0">\n    <title>Premium Portfolio</title>\n    <style>\n        body { margin: 0; font-family: Arial, sans-serif; }\n        .hero { background: url('hero.jpg') no-repeat center center; background-size: cover; height: 100vh; display: flex; justify-content: center; align-items: center; color: white; }\n        .showreel, .portfolio, .about, .contact { padding: 50px; text-align: center; }\n        .portfolio-items { display: flex; flex-wrap: wrap; justify-content: center; }\n        .portfolio-item { margin: 15px; border: 1px solid #ccc; width: 300px; }\n        video { width: 100%; height: auto; }\n        footer { text-align: center; padding: 20px; background-color: #333; color: white; position: fixed; bottom: 0; width: 100%; }\n    </style>\n</head>\n<body>\n    <section class="hero">\n        <h1>Welcome to My Premium Portfolio</h1>\n    </section>\n    <section class="showreel">\n        <h2>Showreel</h2>\n        <video controls>\n            <source src="showreel.mp4" type="video/mp4">\n            Your browser does not support the video tag.\n        </video>\n    </section>\n    <section class="portfolio">\n        <h2>Portfolio</h2>\n        <div class="portfolio-items">\n            <div class="portfolio-item">\n                <img src="portfolio1.jpg" alt="Portfolio Item 1">\n                <p>Project Description 1</p>\n            </div>\n            <div class="portfolio-item">\n                <img src="portfolio2.jpg" alt="Portfolio Item 2">\n                <p>Project Description 2</p>\n            </div>\n        </div>\n    </section>\n    <section class="about">\n        <h2>About Me</h2>\n        <p>Information about the video editor and graphic designer.</p>\n    </section>\n    <section class="contact">\n        <h2>Contact</h2>\n        <p>Email: example@example.com</p>\n    </section>\n    <footer>\n        <p>&copy; 2026 rafipattan</p>\n    </footer>\n</body>\n</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Hero Section -->
+    <header class="hero">
+        <h1>Welcome to My Premium Portfolio</h1>
+        <p>Your gateway to my work and creativity</p>
+        <a href="#portfolio" class="btn">View My Work</a>
+    </header>
+
+    <!-- Showreel Section -->
+    <section class="showreel">
+        <h2>Showreel</h2>
+        <video controls>
+            <source src="showreel.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio">
+        <h2>My Portfolio</h2>
+        <div class="portfolio-items">
+            <div class="portfolio-item">
+                <img src="project1.jpg" alt="Project 1">
+                <h3>Project 1</h3>
+            </div>
+            <div class="portfolio-item">
+                <img src="project2.jpg" alt="Project 2">
+                <h3>Project 2</h3>
+            </div>
+            <div class="portfolio-item">
+                <img src="project3.jpg" alt="Project 3">
+                <h3>Project 3</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about">
+        <h2>About Me</h2>
+        <p>Hello! I'm a passionate developer with experience in creating stunning websites and applications. My goal is to bring ideas to life through code and creativity.</p>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <h2>Contact Me</h2>
+        <form>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 My Portfolio. All rights reserved.</p>
+    </footer>
+</body>
+</html>

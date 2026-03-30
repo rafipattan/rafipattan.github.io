@@ -1,27 +1,213 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Rafi Pattan Portfolio</title>
-<style>
-body{background:#0f0f0f;color:#fff;font-family:Arial;margin:0}
-nav{background:#1a1a1a;padding:1em;display:flex;gap:2em}
-nav a{color:#ff6b35;text-decoration:none}
-.hero{height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
-section{padding:3em;max-width:1200px;margin:0 auto}
-h2{color:#ff6b35;margin-bottom:2em}
-.portfolio-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2em;margin-top:2em}
-.card{background:#1a1a1a;padding:1.5em;border-radius:8px;border:1px solid #333}
-.card:hover{border-color:#ff6b35;transform:translateY(-10px);transition:all 0.3s}
-footer{text-align:center;padding:1em;background:#1a1a1a}
-@media(max-width:768px){nav{flex-direction:column}}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rafi Pattan - Professional Video Editor & Graphic Designer</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%); color: #fff; line-height: 1.6; }
+        nav { position: sticky; top: 0; background: rgba(15,15,15,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid #333; z-index: 1000; padding: 1.5rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+        nav .logo { font-size: 1.8rem; font-weight: 700; color: #fff; }
+        nav ul { display: flex; list-style: none; gap: 2rem; }
+        nav a { color: #b0b0b0; text-decoration: none; transition: 0.3s; font-weight: 500; }
+        nav a:hover { color: #ff6b35; }
+        .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 2rem; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: -50%; right: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(255,107,53,0.1) 0%, transparent 70%); animation: float 20s ease-in-out infinite; }
+        @keyframes float { 0%, 100% { transform: translate(0,0); } 50% { transform: translate(-30px,-30px); } }
+        .hero-content { position: relative; z-index: 1; max-width: 800px; }
+        .hero h1 { font-size: 4rem; margin-bottom: 1rem; animation: slideIn 0.8s ease; font-weight: 700; }
+        .hero p { font-size: 1.5rem; color: #ff6b35; margin-bottom: 1rem; }
+        .hero-desc { font-size: 1.1rem; color: #b0b0b0; margin-bottom: 2rem; }
+        @keyframes slideIn { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
+        .cta { display: inline-block; padding: 1rem 2.5rem; background: linear-gradient(135deg, #ff6b35, #ff8555); color: white; text-decoration: none; border-radius: 50px; font-weight: 600; transition: all 0.3s; border: 2px solid #ff6b35; cursor: pointer; }
+        .cta:hover { background: transparent; color: #ff6b35; transform: translateY(-3px); box-shadow: 0 10px 30px rgba(255,107,53,0.3); }
+        section { padding: 5rem 2rem; max-width: 1200px; margin: 0 auto; }
+        section h2 { font-size: 2.5rem; margin-bottom: 3rem; text-align: center; position: relative; display: inline-block; width: 100%; font-weight: 700; }
+        section h2::after { content: ''; position: absolute; bottom: -20px; left: 50%; transform: translateX(-50%); width: 60px; height: 4px; background: #ff6b35; border-radius: 2px; }
+        .showreel { background: #1a1a1a; }
+        .showreel iframe { width: 100%; max-width: 900px; height: 500px; border-radius: 10px; margin-top: 2rem; display: block; margin-left: auto; margin-right: auto; border: none; box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
+        .portfolio { background: #0f0f0f; }
+        .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; margin-top: 3rem; }
+        .project-card { background: #1a1a1a; border-radius: 10px; overflow: hidden; border: 1px solid #333; transition: all 0.3s; }
+        .project-card:hover { transform: translateY(-10px); border-color: #ff6b35; box-shadow: 0 20px 40px rgba(255,107,53,0.2); }
+        .project-thumb { width: 100%; height: 200px; background: #252525; display: flex; align-items: center; justify-content: center; color: #666; font-weight: 500; }
+        .project-info { padding: 2rem; }
+        .project-cat { display: inline-block; padding: 0.5rem 1rem; background: #252525; color: #ff6b35; border-radius: 20px; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; margin-bottom: 1rem; }
+        .project-title { font-size: 1.3rem; margin-bottom: 0.8rem; font-weight: 600; }
+        .project-desc { color: #b0b0b0; font-size: 0.95rem; margin-bottom: 1rem; }
+        .project-link { color: #ff6b35; text-decoration: none; font-weight: 600; display: inline-block; transition: 0.3s; }
+        .project-link:hover { transform: translateX(5px); color: #ff8555; }
+        .about { background: #1a1a1a; }
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 3rem; align-items: start; }
+        .about-text p { color: #b0b0b0; margin-bottom: 1.5rem; line-height: 1.8; }
+        .skills-section h3 { font-size: 1.3rem; margin-bottom: 2rem; font-weight: 700; }
+        .skills-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; }
+        .skill-item { padding: 1.5rem; background: #0f0f0f; border-left: 4px solid #ff6b35; border-radius: 5px; transition: all 0.3s; }
+        .skill-item:hover { background: #252525; transform: translateX(10px); }
+        .skill-item h4 { margin-bottom: 0.5rem; font-weight: 600; }
+        .skill-item p { color: #999; font-size: 0.9rem; }
+        .contact { background: linear-gradient(135deg, #1a1a1a 0%, #252525 100%); text-align: center; }
+        .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 3rem; }
+        .contact-card { background: #0f0f0f; padding: 2rem; border-radius: 10px; border: 1px solid #333; transition: all 0.3s; }
+        .contact-card:hover { border-color: #ff6b35; transform: translateY(-10px); }
+        .contact-card h3 { color: #ff6b35; margin-bottom: 1rem; text-transform: uppercase; font-size: 0.9rem; font-weight: 600; }
+        .contact-card a { color: #b0b0b0; text-decoration: none; transition: 0.3s; }
+        .contact-card a:hover { color: #ff6b35; }
+        .contact-card p { color: #b0b0b0; }
+        footer { text-align: center; padding: 2rem; border-top: 1px solid #333; color: #b0b0b0; font-size: 0.9rem; }
+        @media (max-width: 768px) { nav { flex-direction: column; gap: 1rem; } nav ul { gap: 1rem; } .hero h1 { font-size: 2.5rem; } .hero p { font-size: 1.2rem; } section h2 { font-size: 1.8rem; } .about-grid { grid-template-columns: 1fr; } .portfolio-grid { grid-template-columns: 1fr; } section { padding: 3rem 1rem; } .showreel iframe { height: 300px; } }
+        @media (max-width: 480px) { .hero h1 { font-size: 2rem; } section h2 { font-size: 1.5rem; } nav ul { gap: 0.5rem; } }
+    </style>
 </head>
 <body>
-<nav><strong>🎬 Rafi Pattan</strong><div><a href="#home">Home</a><a href="#portfolio">Portfolio</a><a href="#about">About</a><a href="#contact">Contact</a></div></nav>
-<section class="hero" id="home"><h1>Rafi Pattan</h1><p>Professional Video Editor & Graphic Designer</p><button style="padding:1em 2em;background:#ff6b35;color:#fff;border:none;border-radius:50px;cursor:pointer">Hire Me</button></section>
-<section id="portfolio"><h2>Recent Projects</h2><div class="portfolio-grid"><div class="card"><h3>Project 1</h3><p>Brand Promo Video</p></div><div class="card"><h3>Project 2</h3><p>Instagram Reels</p></div><div class="card"><h3>Project 3</h3><p>Corporate Video</p></div><div class="card"><h3>Project 4</h3><p>Wedding Highlight</p></div><div class="card"><h3>Project 5</h3><p>Ad Campaign</p></div><div class="card"><h3>Project 6</h3><p>Motion Graphics</p></div></div></section>
-<section id="about"><h2>About Me</h2><p>Professional video editor with expertise in Adobe Creative Suite. Based in Hyderabad, India.</p></section>
-<section id="contact"><h2>Contact</h2><p>Email: rafipattan@example.com | WhatsApp: +91 9876543210</p></section>
-<footer><p>&copy; 2026 Rafi Pattan. All Rights Reserved.</p></footer>
+    <nav>
+        <div class="logo">🎬 Rafi Pattan</div>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#showreel">Showreel</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Rafi Pattan</h1>
+            <p>Professional Video Editor & Graphic Designer</p>
+            <p class="hero-desc">I create high-impact video edits for brands, reels, events, and digital campaigns. Clean storytelling, strong pacing, and visually polished edits.</p>
+            <a href="#contact" class="cta">Hire Me</a>
+        </div>
+    </section>
+
+    <section id="showreel" class="showreel">
+        <h2>Featured Showreel</h2>
+        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Showreel" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </section>
+
+    <section id="portfolio" class="portfolio">
+        <h2>Recent Projects</h2>
+        <div class="portfolio-grid">
+            <div class="project-card">
+                <div class="project-thumb">Project 1</div>
+                <div class="project-info">
+                    <span class="project-cat">Promo Video</span>
+                    <h3 class="project-title">Brand Promo Video</h3>
+                    <p class="project-desc">Professional promotional video for luxury brands.</p>
+                    <a href="#" class="project-link">View →</a>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-thumb">Project 2</div>
+                <div class="project-info">
+                    <span class="project-cat">Reel Edit</span>
+                    <h3 class="project-title">Instagram Reel Collection</h3>
+                    <p class="project-desc">Dynamic Instagram reels with trending audio.</p>
+                    <a href="#" class="project-link">View →</a>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-thumb">Project 3</div>
+                <div class="project-info">
+                    <span class="project-cat">Corporate</span>
+                    <h3 class="project-title">Corporate Training Video</h3>
+                    <p class="project-desc">Professional training with polished color grading.</p>
+                    <a href="#" class="project-link">View →</a>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-thumb">Project 4</div>
+                <div class="project-info">
+                    <span class="project-cat">Event</span>
+                    <h3 class="project-title">Wedding Event Highlight</h3>
+                    <p class="project-desc">Cinematic wedding with emotional storytelling.</p>
+                    <a href="#" class="project-link">View →</a>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-thumb">Project 5</div>
+                <div class="project-info">
+                    <span class="project-cat">Social Media</span>
+                    <h3 class="project-title">Ad Campaign</h3>
+                    <p class="project-desc">High-converting social media advertisements.</p>
+                    <a href="#" class="project-link">View →</a>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-thumb">Project 6</div>
+                <div class="project-info">
+                    <span class="project-cat">Motion</span>
+                    <h3 class="project-title">Motion Graphics Intro</h3>
+                    <p class="project-desc">Animated intro with kinetic typography.</p>
+                    <a href="#" class="project-link">View →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <h2>About Me</h2>
+        <div class="about-grid">
+            <div class="about-text">
+                <p>I am a professional video editor and graphic designer with experience in creating engaging visual content for brands, social media, and promotional campaigns.</p>
+                <p>With expertise in Adobe Creative Suite and a passion for visual excellence, I've worked with diverse clients ranging from startups to established brands.</p>
+                <p>Based in Hyderabad, Telangana, India, I'm dedicated to bringing creative visions to life through professional video editing and graphic design.</p>
+            </div>
+            <div class="skills-section">
+                <h3>Professional Skills</h3>
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <h4>Adobe Premiere Pro</h4>
+                        <p>Professional video editing & color grading</p>
+                    </div>
+                    <div class="skill-item">
+                        <h4>Adobe After Effects</h4>
+                        <p>Motion graphics & visual effects</p>
+                    </div>
+                    <div class="skill-item">
+                        <h4>Adobe Photoshop</h4>
+                        <p>Image editing & graphic design</p>
+                    </div>
+                    <div class="skill-item">
+                        <h4>Adobe Illustrator</h4>
+                        <p>Vector design & logo creation</p>
+                    </div>
+                    <div class="skill-item">
+                        <h4>DaVinci Resolve</h4>
+                        <p>Color grading & advanced editing</p>
+                    </div>
+                    <div class="skill-item">
+                        <h4>Figma</h4>
+                        <p>Design & prototyping</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <h2>Get In Touch</h2>
+        <p style="color: #b0b0b0; margin-bottom: 2rem;">Let's collaborate and create something amazing together</p>
+        <div class="contact-grid">
+            <div class="contact-card">
+                <h3>Email</h3>
+                <a href="mailto:rafipattan@example.com">rafipattan@example.com</a>
+            </div>
+            <div class="contact-card">
+                <h3>WhatsApp</h3>
+                <a href="https://wa.me/919876543210">+91 9876 543 210</a>
+            </div>
+            <div class="contact-card">
+                <h3>Location</h3>
+                <p>Hyderabad, Telangana, India</p>
+            </div>
+        </div>
+        <a href="mailto:rafipattan@example.com" class="cta" style="margin-top: 2rem;">Send Email</a>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Rafi Pattan. All Rights Reserved. | Professional Video Editor & Graphic Designer</p>
+    </footer>
 </body>
 </html>
